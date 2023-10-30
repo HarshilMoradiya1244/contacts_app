@@ -13,10 +13,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    creat();
   }
-  void creat(){
+  void creat()async{
    ShareHalper shr = ShareHalper();
-   shr.getIntroStatus();
+   await shr.getIntroStatus();
   }
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
