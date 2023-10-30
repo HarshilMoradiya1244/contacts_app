@@ -21,12 +21,12 @@ class _IntroScreenState extends State<IntroScreen> {
             PageViewModel(
               title:"Title of custom button page",
               body:"This is a description on a page with a custom button below." ,
-              image: Image.asset("assets/images/phone-book.png",)
+              image: Image.asset("assets/images/phone-call.png",)
             ),
             PageViewModel(
               title:"Title of custom button page",
               body:"This is a description on a page with a custom button below." ,
-              image: Image.asset("assets/images/phone-book.png",)
+              image: Image.asset("assets/images/contacts.png",)
             ),
           ],
           showDoneButton: true,
