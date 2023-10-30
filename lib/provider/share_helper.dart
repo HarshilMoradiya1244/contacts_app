@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ShareHalper {
+class ShareHelper {
 
   void setIntroStatus() async {
     SharedPreferences shr = await SharedPreferences.getInstance();

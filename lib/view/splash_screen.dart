@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     creat();
   }
   void creat()async{
-   ShareHalper shr = ShareHalper();
+   ShareHelper shr = ShareHelper();
    await shr.getIntroStatus();
   }
   Widget build(BuildContext context) {

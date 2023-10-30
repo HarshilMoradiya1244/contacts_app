@@ -31,7 +31,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ],
           showDoneButton: true,
           onDone:(){
-           ShareHalper shr = ShareHalper();
+           ShareHelper shr = ShareHelper();
             shr.setIntroStatus();
             Navigator.pushReplacementNamed(context, 'contact');
           },
