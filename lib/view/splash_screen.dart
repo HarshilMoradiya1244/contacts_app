@@ -1,3 +1,4 @@
+import 'package:contacts_app/provider/share_helper.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
   void creat(){
-
+   ShareHalper shr = ShareHalper();
+   shr.getIntroStatus();
   }
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
