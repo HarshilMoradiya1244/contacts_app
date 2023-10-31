@@ -1,3 +1,4 @@
+import 'package:contacts_app/provider/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,6 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,25 +20,39 @@ class _ContactScreenState extends State<ContactScreen> {
           title: Text("Contact App"),
           actions: [
             Consumer<ThemeProvider>(
-                builder: (context, value, child) => Switch(value: value.isLight, onChanged: (value1) {
-                  value.changeThem();
-                },)
-            )
+                builder: (context, value, child) => Switch(
+                      value: value.isLight,
+                      onChanged: (value1) {
+                        ShareHelper shr = ShareHelper();
+                        shr.setTheme(false);
+                        value.changeThem();
+                      },
+                    ))
           ],
         ),
         body: Center(
           child: Column(
             children: [
-              Text("Heloo",style: Theme.of(context).textTheme.titleLarge,),
-              Text("Heloo",style: Theme.of(context).textTheme.titleMedium,),
-              Text("Heloo",style: Theme.of(context).textTheme.titleLarge,),
+              Text(
+                "Heloo",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                "Heloo",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              Text(
+                "Heloo",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            Navigator.pushNamed(context,'addContact' );
-          },child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.pushNamed(context, 'addContact');
+          },
+          child: Icon(Icons.add),
         ),
       ),
     );

@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   void creat()async{
    ShareHelper shr = ShareHelper();
-   await shr.getIntroStatus();
+   status = await shr.getIntroStatus();
   }
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Center(
           child: Image.asset(
             "assets/images/phone-book.png",
-            height: 300,
+            height: 200,
           ),
         ),
       ),
