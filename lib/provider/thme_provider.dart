@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 class ThemeProvider with ChangeNotifier {
   bool isLight = true;
 
-  void changeThem() {
+  void changeThem() async{
     ShareHelper shr = ShareHelper();
-    shr.getTheme();
+    bool? isTheme = await shr.getTheme();
     isLight = isTheme ?? false;
     notifyListeners();
   }

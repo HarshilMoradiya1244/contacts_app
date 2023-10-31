@@ -1,12 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShareHelper {
-
   void setIntroStatus() async {
     SharedPreferences shr = await SharedPreferences.getInstance();
     shr.setBool("intro", true);
   }
-  Future<bool?> getIntroStatus()async{
+
+  Future<bool?> getIntroStatus() async {
     SharedPreferences shr = await SharedPreferences.getInstance();
     bool? status = await shr.getBool("intro");
     return status;
@@ -16,9 +16,10 @@ class ShareHelper {
     SharedPreferences shr = await SharedPreferences.getInstance();
     shr.setBool("theme", true);
   }
-  Future<bool?> getTheme()async{
+
+  Future<bool?> getTheme() async {
     SharedPreferences shr = await SharedPreferences.getInstance();
-    bool? isTheme = shr.getBool("theme");
+    bool? isTheme = await shr.getBool("theme");
     return isTheme;
   }
 }

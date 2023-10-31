@@ -13,12 +13,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    creat();
+    create();
   }
-  void creat()async{
+  void create()async{
    ShareHelper shr = ShareHelper();
    status = await shr.getIntroStatus();
   }
+  @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
       Navigator.pushReplacementNamed(context,status==false || status==null? 'intro':'contact');

@@ -1,4 +1,3 @@
-
 import 'package:contacts_app/provider/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -18,19 +17,23 @@ class _IntroScreenState extends State<IntroScreen> {
         body: IntroductionScreen(
           pages: [
             PageViewModel(
-              title:"Title of custom button page",
-              body:"This is a description on a page with a custom button below." ,
-              image: Image.asset("assets/images/phone-call.png",)
-            ),
+                title: "Title of custom button page",
+                body:
+                    "This is a description on a page with a custom button below.",
+                image: Image.asset(
+                  "assets/images/phone-call.png",
+                )),
             PageViewModel(
-              title:"Title of custom button page",
-              body:"This is a description on a page with a custom button below." ,
-              image: Image.asset("assets/images/contacts.png",)
-            ),
+                title: "Title of custom button page",
+                body:
+                    "This is a description on a page with a custom button below.",
+                image: Image.asset(
+                  "assets/images/contacts.png",
+                )),
           ],
           showDoneButton: true,
-          onDone:(){
-           ShareHelper shr = ShareHelper();
+          onDone: () {
+            ShareHelper shr = ShareHelper();
             shr.setIntroStatus();
             Navigator.pushReplacementNamed(context, 'contact');
           },
