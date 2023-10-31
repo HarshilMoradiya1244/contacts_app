@@ -9,20 +9,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-   bool? status;
+  bool? status;
+
   @override
   void initState() {
     super.initState();
     create();
   }
-  void create()async{
-   ShareHelper shr = ShareHelper();
-   status = await shr.getIntroStatus();
+
+  void create() async {
+    ShareHelper shr = ShareHelper();
+    status = await shr.getIntroStatus();
   }
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3),(){
-      Navigator.pushReplacementNamed(context,status==false || status==null? 'intro':'contact');
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(
+          context, status == false || status == null ? 'intro' : 'contact');
     });
     return SafeArea(
       child: Scaffold(

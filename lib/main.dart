@@ -1,5 +1,4 @@
 import 'package:contacts_app/provider/contact_provider.dart';
-import 'package:contacts_app/provider/share_helper.dart';
 import 'package:contacts_app/provider/thme_provider.dart';
 import 'package:contacts_app/utils/app_routes.dart';
 import 'package:contacts_app/utils/app_theme.dart';
