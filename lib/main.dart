@@ -1,4 +1,5 @@
 import 'package:contacts_app/provider/contact_provider.dart';
+import 'package:contacts_app/provider/share_helper.dart';
 import 'package:contacts_app/provider/thme_provider.dart';
 import 'package:contacts_app/utils/app_routes.dart';
 import 'package:contacts_app/utils/app_theme.dart';
@@ -14,11 +15,15 @@ void main() {
            ChangeNotifierProvider(create: (context) => ContactProvider(),)
       ],
       child: Consumer<ThemeProvider>(
-        builder: (context, value, child) =>MaterialApp(
+        builder: (context, value, child) {
+
+          value.changeThem();
+         return  MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: value.isLight ? lightTheme : darkTheme,
           routes: screen_routes,
-        ),
+        );
+       }
       ),
     ),
   );
