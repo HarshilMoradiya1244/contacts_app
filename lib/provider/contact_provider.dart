@@ -19,7 +19,8 @@ class ContactProvider with ChangeNotifier{
     }
     notifyListeners();
   }
-  void addContactData(){
+  void addContactData(ContactModel contactModel){
 
+    addContact.add(contactModel);
   }
 }

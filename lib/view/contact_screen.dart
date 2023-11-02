@@ -41,8 +41,7 @@ class _ContactScreenState extends State<ContactScreen> {
           ],
         ),
         body: ListView.builder(
-          itemCount: 2,
-          // itemCount:providerW!.addContact.length,
+          itemCount:providerW!.addContact.length,
           itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(10.0),
@@ -68,8 +67,8 @@ class _ContactScreenState extends State<ContactScreen> {
                   ),
                   Column(
                     children: [
-                      // Text("${providerW!.addContact[index].name}"),
-                      // Text("${providerW!.addContact[index].contact}"),
+                      Text("${providerW!.addContact[index].name}"),
+                      Text("${providerW!.addContact[index].contact}"),
                     ],
                   )
                 ],),
