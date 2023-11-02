@@ -1,4 +1,4 @@
-import 'package:contacts_app/provider/share_helper.dart';
+import 'package:contacts_app/utils/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 

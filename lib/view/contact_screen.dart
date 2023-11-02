@@ -1,7 +1,8 @@
-import 'package:contacts_app/provider/share_helper.dart';
+import 'package:contacts_app/utils/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/contact_provider.dart';
 import '../provider/thme_provider.dart';
 
 class ContactScreen extends StatefulWidget {
@@ -12,8 +13,17 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  ContactProvider? providerR;
+  ContactProvider? providerW;
+
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtContact = TextEditingController();
+  TextEditingController txtEmail = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    providerR = context.read<ContactProvider>();
+    providerW = context.read<ContactProvider>();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -30,24 +40,43 @@ class _ContactScreenState extends State<ContactScreen> {
                     ))
           ],
         ),
-        body: Center(
-          child: Column(
-            children: [
-              Text(
-                "Heloo",
-                style: Theme.of(context).textTheme.titleLarge,
+        body: ListView.builder(
+          itemCount: 2,
+          // itemCount:providerW!.addContact.length,
+          itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              height: MediaQuery.of(context).size.height*0.10,
+              width: MediaQuery.of(context).size.width*0.10,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey.shade300
               ),
-              Text(
-                "Heloo",
-                style: Theme.of(context).textTheme.titleMedium,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.18,
+                    width: MediaQuery.of(context).size.width*0.20,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.pinkAccent
+                    ),
+
+                  ),
+                  Column(
+                    children: [
+                      // Text("${providerW!.addContact[index].name}"),
+                      // Text("${providerW!.addContact[index].contact}"),
+                    ],
+                  )
+                ],),
               ),
-              Text(
-                "Heloo",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, 'addContact');

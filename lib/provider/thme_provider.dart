@@ -1,4 +1,4 @@
-import 'package:contacts_app/provider/share_helper.dart';
+import 'package:contacts_app/utils/share_helper.dart';
 import 'package:flutter/cupertino.dart';
 
 class ThemeProvider with ChangeNotifier {
