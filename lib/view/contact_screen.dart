@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:contacts_app/utils/color_list.dart';
 import 'package:contacts_app/utils/share_helper.dart';
 import 'package:flutter/material.dart';
@@ -43,44 +45,51 @@ class _ContactScreenState extends State<ContactScreen> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.10,
-                width: MediaQuery.of(context).size.width * 0.10,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.shade300),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.18,
-                        width: MediaQuery.of(context).size.width * 0.20,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: boxcolorList[index],
-                          image: DecorationImage(image: AssetImage("${providerW!.addContactList[index].image}"))
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
-                            style: TextStyle(fontSize: 20),
+              child: InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, 'contactInfo');
+                },
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.10,
+                  width: MediaQuery.of(context).size.width * 0.10,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey.shade300),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [providerW!.addContactList[index].imagePath != null  ? CircleAvatar(
+                          radius: 25,
+                          backgroundImage: FileImage(File("${providerW!.addContactList[index].imagePath}")),
+                        ):
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.18,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: boxcolorList[index],
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                              style: TextStyle(fontSize: 20),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("${providerR!.addContactList[index].name}"),
-                          Text("${providerR!.addContactList[index].contact}"),
-                        ],
-                      )
-                    ],
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("${providerR!.addContactList[index].name}"),
+                            Text("${providerR!.addContactList[index].contact}"),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

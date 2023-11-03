@@ -5,6 +5,7 @@ class ContactProvider with ChangeNotifier {
   List<ContactModel> addContactList = [];
 
   int stepindex = 0;
+  String? imagePath;
   String? path;
 
   void nextStep() {
