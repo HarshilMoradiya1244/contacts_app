@@ -59,6 +59,7 @@ class _ContactScreenState extends State<ContactScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: boxcolorList[index],
+                          image: DecorationImage(image: AssetImage("${providerW!.addContactList[index].image}"))
                         ),
                         child: Align(
                           alignment: Alignment.center,
