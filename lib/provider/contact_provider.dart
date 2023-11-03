@@ -1,26 +1,33 @@
 import 'package:contacts_app/model/contact_model.dart';
 import 'package:flutter/cupertino.dart';
 
-class ContactProvider with ChangeNotifier{
+class ContactProvider with ChangeNotifier {
+  List<ContactModel> addContactList = [];
 
-  List<ContactModel> addContact =[];
+  int stepindex = 0;
+  String? path;
 
-  int stepindex =0;
-
-  void nextStep (){
-    if(stepindex < 3){
+  void nextStep() {
+    if (stepindex < 3) {
       stepindex++;
     }
     notifyListeners();
   }
-  void cancelStep (){
-    if(stepindex > 0){
+
+  void cancelStep() {
+    if (stepindex > 0) {
       stepindex--;
     }
     notifyListeners();
   }
-  void addContactData(ContactModel contactModel){
 
-    addContact.add(contactModel);
+  void addContactData(ContactModel cm) {
+    addContactList.add(cm);
+    notifyListeners();
+  }
+
+  void updateImagePath(String newPath) {
+    path = newPath;
+    notifyListeners();
   }
 }

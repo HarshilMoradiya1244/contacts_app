@@ -10,20 +10,21 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-           ChangeNotifierProvider(create: (context) => ThemeProvider(),),
-           ChangeNotifierProvider(create: (context) => ContactProvider(),)
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ContactProvider(),
+        )
       ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, value, child) {
-
-          value.changeThem();
-         return  MaterialApp(
+      child: Consumer<ThemeProvider>(builder: (context, value, child) {
+        value.changeThem();
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: value.isLight ? lightTheme : darkTheme,
           routes: screen_routes,
         );
-       }
-      ),
+      }),
     ),
   );
 }
