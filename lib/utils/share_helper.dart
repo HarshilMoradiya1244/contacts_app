@@ -22,4 +22,5 @@ class ShareHelper {
     bool? isTheme = await shr.getBool("theme");
     return isTheme;
   }
+
 }

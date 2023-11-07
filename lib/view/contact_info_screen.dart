@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:contacts_app/model/contact_model.dart';
+import 'package:contacts_app/provider/contact_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ContactInfoScreen extends StatefulWidget {
   const ContactInfoScreen({super.key});
@@ -206,7 +208,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                           fontSize: 20, color: Colors.black),
                                     ),
                                     Text(
-                                      "Indiaß",
+                                      "India",
                                       style: TextStyle(
                                           fontSize: 10, color: Colors.black),
                                     ),
@@ -245,8 +247,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         shape: BoxShape.circle,
                                         color: Colors.green),
                                     child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.call),
+                                      onPressed: () {
+
+                                      },
+                                      icon: Icon(Icons.edit),
                                       color: Colors.white,
                                     )),
                                 SizedBox(
@@ -258,8 +262,11 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle, color: Colors.blue),
                                     child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.message),
+                                      onPressed: () {
+                                        context.read<ContactProvider>().contactDelete( context.);
+                                        Navigator.pop(context);
+                                      },
+                                      icon: Icon(Icons.delete),
                                       color: Colors.white,
                                     )),
                               ],

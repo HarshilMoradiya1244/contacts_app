@@ -7,6 +7,7 @@ class ContactProvider with ChangeNotifier {
   int stepindex = 0;
   String? imagePath;
   String? path;
+  int? infoIndex;
 
   void nextStep() {
     if (stepindex < 3) {
@@ -22,6 +23,11 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void resetStep() {
+    stepindex = 0;
+    notifyListeners();
+  }
+
   void addContactData(ContactModel cm) {
     addContactList.add(cm);
     notifyListeners();
@@ -29,6 +35,20 @@ class ContactProvider with ChangeNotifier {
 
   void updateImagePath(String newPath) {
     path = newPath;
+    notifyListeners();
+  }
+
+  // void contactIndex() {
+  //   index = infoIndex!;
+  // }
+  void editData(ContactModel c1)
+  {
+    addContactList.add(c1);
+    notifyListeners();
+  }
+
+  void contactDelete() {
+    addContactList.removeAt(infoIndex!);
     notifyListeners();
   }
 }

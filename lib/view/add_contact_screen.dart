@@ -95,7 +95,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     ),
                     Step(
                         title: const Text("Name of Contact"),
-                        content: TextField(
+                        content: TextFormField(
                           controller: txtName,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -104,7 +104,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                         )),
                     Step(
                       title: const Text("Contact Number"),
-                      content: TextField(
+                      content: TextFormField(
                         controller: txtContact,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
@@ -114,7 +114,13 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     ),
                     Step(
                         title: const Text("Contact Email"),
-                        content: TextField(
+                        content: TextFormField(
+                          validator:  (value) {
+                    if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                    }
+                    return null;
+                    },
                           controller: txtEmail,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -133,6 +139,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     imagePath: providerW!.path);
                     providerR!.addContactData(cm);
                     Navigator.pop(context);
+                    providerW!.resetStep();
                   },
                   child: const Text("Submit"))
             ],
