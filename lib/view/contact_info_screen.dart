@@ -21,7 +21,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Contact Info",
             style: TextStyle(color: Colors.black),
           ),
@@ -30,7 +30,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_outlined,
               color: Colors.black,
             ),
@@ -44,38 +44,44 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                 Container(
                   height: MediaQuery.sizeOf(context).height * 0.30,
                   width: MediaQuery.sizeOf(context).width,
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: const BoxDecoration(color: Colors.white),
                   child: Column(
                     children: [
-                     c1.imagePath == null ? CircleAvatar(
-                        radius: 80,
-                        child: Text("${c1.name?.substring(0,1).toUpperCase()}",style: Theme.of(context). textTheme.titleLarge,),
-                      ):
-                      CircleAvatar(
-                        radius: 80,
-                      backgroundImage: FileImage(File("${c1.imagePath}")),
-                      ),
-                      Spacer( ),
+                      c1.imagePath == null
+                          ? CircleAvatar(
+                              radius: 80,
+                              child: Text(
+                                "${c1.name?.substring(0, 1).toUpperCase()}",
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                            )
+                          : CircleAvatar(
+                              radius: 80,
+                              backgroundImage:
+                                  FileImage(File("${c1.imagePath}")),
+                            ),
+                      Spacer(),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
                             alignment: Alignment.bottomCenter,
                             child: Text(
                               "${c1.name}",
-                              style: TextStyle(fontSize: 20, color: Colors.black),
+                              style:
+                                  const TextStyle(fontSize: 20, color: Colors.black),
                             )),
                       ),
                     ],
                   ),
                 ),
-                Divider(
-                  color: Colors.grey.shade500,
+                const Divider(
+                  color: Colors.grey,
                   thickness: 1,
                 ),
                 Container(
                   height: MediaQuery.sizeOf(context).height * 0.56,
                   width: MediaQuery.sizeOf(context).width,
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: const BoxDecoration(color: Colors.white),
                   child: Column(
                     children: [
                       Container(
@@ -87,14 +93,14 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               children: [
                                 Text(
                                   "+91 ${c1.contact}",
-                                  style:
-                                      TextStyle(fontSize: 20, color: Colors.black),
+                                  style: const TextStyle(
+                                      fontSize: 20, color: Colors.black),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.green),
                                     child: IconButton(
@@ -102,14 +108,15 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                       icon: Icon(Icons.call),
                                       color: Colors.white,
                                     )),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle, color: Colors.blue),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.blue),
                                     child: IconButton(
                                       onPressed: () {},
                                       icon: Icon(Icons.message),
@@ -118,8 +125,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               ],
                             ),
                           )),
-                      Divider(
-                        color: Colors.grey.shade500,
+                      const Divider(
+                        color: Colors.grey,
                         thickness: 1,
                       ),
                       Container(
@@ -134,10 +141,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                   children: [
                                     Text(
                                       "${c1.email}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 15, color: Colors.black),
                                     ),
-                                    Text(
+                                    const Text(
                                       "Email",
                                       style: TextStyle(
                                           fontSize: 10, color: Colors.black),
@@ -148,8 +155,9 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle, color: Colors.red),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.red),
                                     child: IconButton(
                                       onPressed: () {},
                                       icon: Icon(Icons.email_outlined),
@@ -158,8 +166,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               ],
                             ),
                           )),
-                      Divider(
-                        color: Colors.grey.shade500,
+                      const Divider(
+                        color: Colors.grey,
                         thickness: 1,
                       ),
                       Container(
@@ -169,16 +177,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
                               children: [
-                                Text(
+                                const Text(
                                   "Video Call",
-                                  style:
-                                      TextStyle(fontSize: 20, color: Colors.black),
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black),
                                 ),
                                 Spacer(),
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.green),
                                     child: IconButton(
@@ -189,8 +197,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               ],
                             ),
                           )),
-                      Divider(
-                        color: Colors.grey.shade500,
+                      const Divider(
+                        color: Colors.grey,
                         thickness: 1,
                       ),
                       Container(
@@ -200,7 +208,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
                               children: [
-                                Column(
+                                const Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -219,8 +227,9 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle, color: Colors.red),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.red),
                                     child: IconButton(
                                       onPressed: () {},
                                       icon: Icon(Icons.location_on_outlined),
@@ -229,8 +238,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               ],
                             ),
                           )),
-                      Divider(
-                        color: Colors.grey.shade500,
+                      const Divider(
+                        color: Colors.grey,
                         thickness: 1,
                       ),
                       Container(
@@ -244,30 +253,33 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () {
-                                     showWidget(context, c1);
+                                        showWidget(context, c1);
                                       },
                                       icon: Icon(Icons.edit),
                                       color: Colors.white,
                                     )),
-                                SizedBox(
+                                const SizedBox(
                                   width: 20,
                                 ),
                                 Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle, color: Colors.blue),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.blue),
                                     child: IconButton(
                                       onPressed: () {
-                                        context.read<ContactProvider>().contactDelete();
+                                        context
+                                            .read<ContactProvider>()
+                                            .contactDelete();
                                         Navigator.pop(context);
                                       },
-                                      icon: Icon(Icons.delete),
+                                      icon: const Icon(Icons.delete),
                                       color: Colors.white,
                                     )),
                               ],

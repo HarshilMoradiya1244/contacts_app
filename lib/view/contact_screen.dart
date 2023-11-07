@@ -77,7 +77,7 @@ class _ContactScreenState extends State<ContactScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Column(
@@ -100,7 +100,7 @@ class _ContactScreenState extends State<ContactScreen> {
           onPressed: () {
             Navigator.pushNamed(context, 'addContact');
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       ),
     );

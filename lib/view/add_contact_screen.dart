@@ -115,12 +115,12 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     Step(
                         title: const Text("Contact Email"),
                         content: TextFormField(
-                          validator:  (value) {
-                    if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                    }
-                    return null;
-                    },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
                           controller: txtEmail,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -133,10 +133,10 @@ class _AddContactScreenState extends State<AddContactScreen> {
               ElevatedButton(
                   onPressed: () {
                     ContactModel cm = ContactModel(
-                      name: txtName.text,
-                      contact: txtContact.text,
-                      email: txtEmail.text,
-                    imagePath: providerW!.path);
+                        name: txtName.text,
+                        contact: txtContact.text,
+                        email: txtEmail.text,
+                        imagePath: providerW!.path);
                     providerR!.addContactData(cm);
                     Navigator.pop(context);
                     providerW!.resetStep();
