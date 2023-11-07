@@ -43,7 +43,7 @@ class ContactProvider with ChangeNotifier {
   // }
   void editContact(ContactModel c1)
   {
-    addContactList[infoIndex!]=ContactModel();
+    addContactList[infoIndex!]= c1;
     notifyListeners();
   }
 

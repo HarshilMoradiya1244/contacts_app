@@ -47,6 +47,7 @@ class _ContactScreenState extends State<ContactScreen> {
               padding: const EdgeInsets.all(10.0),
               child: InkWell(
                 onTap: (){
+                  providerR!.storeIndex(index);
                   Navigator.pushNamed(context, 'contactInfo',arguments: providerR!.addContactList[index]);
                 },
                 child: Container(

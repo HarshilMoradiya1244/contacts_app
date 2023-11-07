@@ -5,6 +5,7 @@ import 'package:contacts_app/provider/contact_provider.dart';
 import 'package:contacts_app/widget/update_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactInfoScreen extends StatefulWidget {
   const ContactInfoScreen({super.key});
@@ -104,7 +105,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         shape: BoxShape.circle,
                                         color: Colors.green),
                                     child: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Uri uri = Uri.parse("tel:+91${c1.contact}");
+                                        await launchUrl(uri);
+                                      },
                                       icon: Icon(Icons.call),
                                       color: Colors.white,
                                     )),
@@ -118,7 +122,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         shape: BoxShape.circle,
                                         color: Colors.blue),
                                     child: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Uri uri = Uri.parse("sms:+91${c1.contact}");
+                                        await launchUrl(uri);
+                                      },
                                       icon: Icon(Icons.message),
                                       color: Colors.white,
                                     )),
@@ -159,7 +166,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         shape: BoxShape.circle,
                                         color: Colors.red),
                                     child: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Uri uri = Uri.parse("mailto:+91${c1.email}");
+                                        await launchUrl(uri);
+                                      },
                                       icon: Icon(Icons.email_outlined),
                                       color: Colors.white,
                                     )),
