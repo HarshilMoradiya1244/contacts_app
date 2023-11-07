@@ -13,7 +13,6 @@ void showWidget(BuildContext context,ContactModel c1) {
     context: context,
     builder: (context) {
       return  AlertDialog(
-        alignment: Alignment.bottomCenter,
         title: const Text("Update Contacts"),
         actions: [
           TextField(
@@ -45,7 +44,7 @@ void showWidget(BuildContext context,ContactModel c1) {
             c1.name=txtName.text;
             c1.contact=txtContact.text;
             c1.email=txtEmail.text;
-            context.read<ContactProvider>().editData(c1);
+            context.read<ContactProvider>().editContact(c1);
             Navigator.pop(context);
             Navigator.pop(context);
           },child: const Text("Update"),)

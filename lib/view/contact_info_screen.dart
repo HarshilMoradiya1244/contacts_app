@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:contacts_app/model/contact_model.dart';
 import 'package:contacts_app/provider/contact_provider.dart';
+import 'package:contacts_app/widget/update_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -134,7 +135,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     Text(
                                       "${c1.email}",
                                       style: TextStyle(
-                                          fontSize: 20, color: Colors.black),
+                                          fontSize: 15, color: Colors.black),
                                     ),
                                     Text(
                                       "Email",
@@ -248,7 +249,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () {
-
+                                     showWidget(context, c1);
                                       },
                                       icon: Icon(Icons.edit),
                                       color: Colors.white,
@@ -263,7 +264,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         shape: BoxShape.circle, color: Colors.blue),
                                     child: IconButton(
                                       onPressed: () {
-                                        context.read<ContactProvider>().contactDelete( context.);
+                                        context.read<ContactProvider>().contactDelete();
                                         Navigator.pop(context);
                                       },
                                       icon: Icon(Icons.delete),
