@@ -14,9 +14,15 @@ class _HiddenScreenState extends State<HiddenScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Hidden Screen"),
-          leading: IconButton(onPressed: (){
-            Navigator.pop(context);
-          },icon: Icon(Icons.arrow_back_outlined,color: Colors.black,),),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_outlined,
+              color: Colors.black,
+            ),
+          ),
         ),
       ),
     );

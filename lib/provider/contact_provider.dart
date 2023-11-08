@@ -58,7 +58,6 @@ class ContactProvider with ChangeNotifier {
 
   Future<void> shareData(ContactModel c1) async {
     Share.share("${c1.name} \n ${c1.contact}");
-    ShareResult result =
-        await Share.shareWithResult("");
+    ShareResult result = await Share.shareWithResult("");
   }
 }

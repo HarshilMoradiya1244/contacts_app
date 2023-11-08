@@ -56,7 +56,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     },
                     steps: [
                       Step(
-                        title: const Text("Add Image"),
+                        title: const Text("Image"),
                         content: Column(
                           children: [
                             CircleAvatar(
@@ -77,7 +77,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                         ),
                       ),
                       Step(
-                        title: const Text("Add Name"),
+                        title: const Text(" Name"),
                         content: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -94,7 +94,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                         ),
                       ),
                       Step(
-                        title: const Text("Add Contact Number"),
+                        title: const Text("Contact Number"),
                         content: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -111,7 +111,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                         ),
                       ),
                       Step(
-                        title: const Text("Add Email"),
+                        title: const Text("Email"),
                         content: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
