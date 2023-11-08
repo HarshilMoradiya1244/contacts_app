@@ -61,6 +61,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                           children: [
                             CircleAvatar(
                               radius: 70,
+                              backgroundColor: Colors.grey,
                               backgroundImage: value.path != null
                                   ? FileImage(File(value.path!))
                                   : null,

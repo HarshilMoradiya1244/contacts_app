@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
-  useMaterial3: true,
+    useMaterial3: true,
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.white70,
         centerTitle: true,
@@ -10,11 +10,10 @@ ThemeData lightTheme = ThemeData(
           color: Colors.black,
         )),
     textTheme: TextTheme(
-      titleLarge:TextStyle(fontSize:25,color:Colors.black),
-      titleMedium:TextStyle(fontSize:15,color:Colors.grey.shade300),
+      titleLarge: TextStyle(fontSize: 25, color: Colors.black),
+      titleMedium: TextStyle(fontSize: 15, color: Colors.grey.shade300),
     ),
     brightness: Brightness.light);
-
 
 ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -26,7 +25,7 @@ ThemeData darkTheme = ThemeData(
           color: Colors.white,
         )),
     textTheme: TextTheme(
-      titleLarge:TextStyle(fontSize:25,color:Colors.white),
-      titleMedium:TextStyle(fontSize:15,color:Colors.white54),
+      titleLarge: TextStyle(fontSize: 25, color: Colors.white),
+      titleMedium: TextStyle(fontSize: 15, color: Colors.white54),
     ),
     brightness: Brightness.dark);
