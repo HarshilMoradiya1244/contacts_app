@@ -39,14 +39,6 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'hidden');
-                },
-                icon: Icon(
-                  Icons.remove_red_eye_outlined,
-                  color: Colors.black,
-                )),
-            IconButton(
-                onPressed: () {
                   context.read<ContactProvider>().shareData(c1);
                 },
                 icon: Icon(
@@ -311,6 +303,23 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         Navigator.pop(context);
                                       },
                                       icon: const Icon(Icons.delete),
+                                      color: Colors.white,
+                                    )),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.green),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        context.read<ContactProvider>().hideContact();
+                                        Navigator.pop(context);
+                                      },
+                                      icon: const Icon(Icons.lock),
                                       color: Colors.white,
                                     )),
                               ],

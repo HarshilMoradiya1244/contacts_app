@@ -67,6 +67,7 @@ void showWidget(BuildContext context, ContactModel c1) {
             ),
             TextField(
               controller: txtName,
+              keyboardType: TextInputType.name,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), label: Text("Name")),
             ),
@@ -75,6 +76,7 @@ void showWidget(BuildContext context, ContactModel c1) {
             ),
             TextField(
               controller: txtContact,
+              keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), label: Text("Contact")),
             ),
@@ -83,6 +85,7 @@ void showWidget(BuildContext context, ContactModel c1) {
             ),
             TextField(
               controller: txtEmail,
+              keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), label: Text("Email")),
             ),

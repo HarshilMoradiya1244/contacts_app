@@ -7,11 +7,11 @@ import 'package:flutter/cupertino.dart';
 
 import '../view/contact_screen.dart';
 
-Map<String,WidgetBuilder> screen_routes ={
-'/':(context) => const SplashScreen(),
-  'intro':(context) => const IntroScreen(),
-  'contact':(context) => const ContactScreen(),
-  'addContact':(context) => const AddContactScreen(),
-  'contactInfo':(context) => const ContactInfoScreen(),
-  'hidden':(context) => const HiddenScreen(),
+Map<String, WidgetBuilder> screen_routes = {
+  '/': (context) => const SplashScreen(),
+  'intro': (context) => const IntroScreen(),
+  'contact': (context) => const ContactScreen(),
+  'addContact': (context) => const AddContactScreen(),
+  'contactInfo': (context) => const ContactInfoScreen(),
+  'hidden': (context) => const HiddenScreen(),
 };

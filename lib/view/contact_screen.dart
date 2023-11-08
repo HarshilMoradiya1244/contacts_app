@@ -29,6 +29,9 @@ class _ContactScreenState extends State<ContactScreen> {
         appBar: AppBar(
           title: Text("Contact App"),
           actions: [
+            IconButton(onPressed: (){
+              Navigator.pushNamed(context, 'hidden');
+      }, icon: Icon(Icons.remove_red_eye_outlined)),
             Consumer<ThemeProvider>(
                 builder: (context, value, child) => Switch(
                       value: value.isLight,
