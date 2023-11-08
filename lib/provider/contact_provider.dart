@@ -1,5 +1,6 @@
 import 'package:contacts_app/model/contact_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ContactProvider with ChangeNotifier {
   List<ContactModel> addContactList = [];
@@ -41,9 +42,8 @@ class ContactProvider with ChangeNotifier {
   // void contactIndex() {
   //   index = infoIndex!;
   // }
-  void editContact(ContactModel c1)
-  {
-    addContactList[infoIndex!]= c1;
+  void editContact(ContactModel c1) {
+    addContactList[infoIndex!] = c1;
     notifyListeners();
   }
 
@@ -51,7 +51,14 @@ class ContactProvider with ChangeNotifier {
     addContactList.removeAt(infoIndex!);
     notifyListeners();
   }
-  void storeIndex(int index){
+
+  void storeIndex(int index) {
     infoIndex = index;
+  }
+
+  Future<void> shareData(ContactModel c1) async {
+    Share.share("${c1.name} \n ${c1.contact}");
+    ShareResult result =
+        await Share.shareWithResult("");
   }
 }

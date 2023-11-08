@@ -1,5 +1,6 @@
 import 'package:contacts_app/view/add_contact_screen.dart';
 import 'package:contacts_app/view/contact_info_screen.dart';
+import 'package:contacts_app/view/hidden_screen.dart';
 import 'package:contacts_app/view/intro_screen.dart';
 import 'package:contacts_app/view/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,4 +13,5 @@ Map<String,WidgetBuilder> screen_routes ={
   'contact':(context) => const ContactScreen(),
   'addContact':(context) => const AddContactScreen(),
   'contactInfo':(context) => const ContactInfoScreen(),
+  'hidden':(context) => const HiddenScreen(),
 };

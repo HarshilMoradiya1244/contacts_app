@@ -28,106 +28,107 @@ class _AddContactScreenState extends State<AddContactScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Add Contact"),
+          backgroundColor: Colors.white,
+          title: const Text(
+            "Add Contacts",
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Theme(
-                data: ThemeData(
-                  colorScheme: Theme.of(context).colorScheme.copyWith(
-                        primary: Colors.grey,
-                        background: Colors.grey,
-                        secondary: Colors.green,
-                      ),
-                ),
-                child: Stepper(
-                  currentStep: providerW!.stepindex,
-                  onStepContinue: () {
-                    providerW!.nextStep();
-                  },
-                  onStepCancel: () {
-                    providerW!.cancelStep();
-                  },
-                  steps: [
-                    Step(
-                      title: const Text("Image"),
-                      content: InkWell(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                alignment: Alignment.bottomCenter,
-                                title: const Text("Pick Profile Picture"),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () async {
-                                        ImagePicker picker = ImagePicker();
-                                        XFile? image = await picker.pickImage(
-                                            source: ImageSource.gallery);
-                                        providerR!.updateImagePath(image!.path);
-                                      },
-                                      child: const Text("Choose Photo")),
-                                  TextButton(
-                                      onPressed: () async {
-                                        ImagePicker picker = ImagePicker();
-                                        XFile? image = await picker.pickImage(
-                                            source: ImageSource.camera);
-                                        providerR!.updateImagePath(image!.path);
-                                      },
-                                      child: const Text("Take Photo")),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        child: Consumer<ContactProvider>(
-                          builder: (context, value, child) => CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            backgroundImage: value.path != null
-                                ? FileImage(File(value.path!))
-                                : null,
-                            radius: 60,
-                          ),
+              Consumer<ContactProvider>(
+                builder: (context, value, child) => Theme(
+                  data: ThemeData(
+                      colorScheme: Theme.of(context).colorScheme.copyWith(
+                            primary: Colors.grey,
+                            background: Colors.grey,
+                            secondary: Colors.grey,
+                          )),
+                  child: Stepper(
+                    currentStep: value.stepindex,
+                    onStepContinue: () {
+                      value.nextStep();
+                    },
+                    onStepCancel: () {
+                      value.resetStep();
+                    },
+                    steps: [
+                      Step(
+                        title: const Text("Add Image"),
+                        content: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 70,
+                              backgroundImage: value.path != null
+                                  ? FileImage(File(value.path!))
+                                  : null,
+                            ),
+                            IconButton(
+                                onPressed: () async {
+                                  ImagePicker imgPiker = ImagePicker();
+                                  XFile? image = await imgPiker.pickImage(
+                                      source: ImageSource.gallery);
+                                  providerR!.updateImagePath(image!.path);
+                                },
+                                icon: const Icon(Icons.image))
+                          ],
                         ),
                       ),
-                    ),
-                    Step(
-                        title: const Text("Name of Contact"),
-                        content: TextFormField(
-                          controller: txtName,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                          keyboardType: TextInputType.name,
-                        )),
-                    Step(
-                      title: const Text("Contact Number"),
-                      content: TextFormField(
-                        controller: txtContact,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                        ),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                    Step(
-                        title: const Text("Contact Email"),
+                      Step(
+                        title: const Text("Add Name"),
                         content: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
+                              return "please enter number";
+                            }
+                            return null;
+                          },
+                          controller: txtName,
+                          keyboardType: TextInputType.name,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Enter Name"),
+                          ),
+                        ),
+                      ),
+                      Step(
+                        title: const Text("Add Contact Number"),
+                        content: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "please enter number";
+                            }
+                            return null;
+                          },
+                          controller: txtContact,
+                          keyboardType: TextInputType.phone,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Enter Number"),
+                          ),
+                        ),
+                      ),
+                      Step(
+                        title: const Text("Add Email"),
+                        content: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "please enter number";
                             }
                             return null;
                           },
                           controller: txtEmail,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            label: Text("Enter Email"),
                           ),
-                          keyboardType: TextInputType.emailAddress,
-                        )),
-                  ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               ElevatedButton(

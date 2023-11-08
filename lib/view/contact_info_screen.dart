@@ -36,6 +36,24 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
               color: Colors.black,
             ),
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'hidden');
+                },
+                icon: Icon(
+                  Icons.remove_red_eye_outlined,
+                  color: Colors.black,
+                )),
+            IconButton(
+                onPressed: () {
+                  context.read<ContactProvider>().shareData(c1);
+                },
+                icon: Icon(
+                  Icons.share_outlined,
+                  color: Colors.black,
+                )),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -68,8 +86,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                             alignment: Alignment.bottomCenter,
                             child: Text(
                               "${c1.name}",
-                              style:
-                                  const TextStyle(fontSize: 20, color: Colors.black),
+                              style: const TextStyle(
+                                  fontSize: 20, color: Colors.black),
                             )),
                       ),
                     ],
@@ -106,7 +124,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () async {
-                                        Uri uri = Uri.parse("tel:+91${c1.contact}");
+                                        Uri uri =
+                                            Uri.parse("tel:+91${c1.contact}");
                                         await launchUrl(uri);
                                       },
                                       icon: Icon(Icons.call),
@@ -123,7 +142,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.blue),
                                     child: IconButton(
                                       onPressed: () async {
-                                        Uri uri = Uri.parse("sms:+91${c1.contact}");
+                                        Uri uri =
+                                            Uri.parse("sms:+91${c1.contact}");
                                         await launchUrl(uri);
                                       },
                                       icon: Icon(Icons.message),
@@ -167,7 +187,8 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.red),
                                     child: IconButton(
                                       onPressed: () async {
-                                        Uri uri = Uri.parse("mailto:+91${c1.email}");
+                                        Uri uri =
+                                            Uri.parse("mailto:+91${c1.email}");
                                         await launchUrl(uri);
                                       },
                                       icon: Icon(Icons.email_outlined),
