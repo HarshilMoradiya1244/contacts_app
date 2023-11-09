@@ -87,19 +87,19 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-// Future<bool?> bioMatrix() async {
-//     LocalAuthentication auth = LocalAuthentication();
-//     bool checkBioMatrixStatus = await auth.canCheckBiometrics;
-//     if(checkBioMatrixStatus){
-//       List<BiometricType>biotypes = await auth.getAvailableBiometrics();
-//       if(biotypes.isNotEmpty){
-//         bool isAuth = await auth.authenticate(localizedReason: "Whats up!",options: AuthenticationOptions(
-//           biometricOnly: false,
-//           useErrorDialogs: true
-//         ),);
-//         return isAuth;
-//       }
-//     }
-//     return null;
-// }
+Future<bool?> bioMatrix() async {
+    LocalAuthentication auth = LocalAuthentication();
+    bool checkBioMatrixStatus = await auth.canCheckBiometrics;
+    if(checkBioMatrixStatus){
+      List<BiometricType>biotypes = await auth.getAvailableBiometrics();
+      if(biotypes.isNotEmpty){
+        bool isAuth = await auth.authenticate(localizedReason: "Whats up!",options: AuthenticationOptions(
+          biometricOnly: false,
+          useErrorDialogs: true
+        ),);
+        return isAuth;
+      }
+    }
+    return null;
+}
 }

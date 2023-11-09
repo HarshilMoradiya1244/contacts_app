@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/contact_provider.dart';
-import '../provider/thme_provider.dart';
 import '../utils/color_list.dart';
-import '../utils/share_helper.dart';
 
 class HiddenScreen extends StatefulWidget {
   const HiddenScreen({super.key});
@@ -29,14 +27,14 @@ class _HiddenScreenState extends State<HiddenScreen> {
           title: Text("Hide Screen "),
         ),
         body: ListView.builder(
-          itemCount: providerW!.addContactList.length,
+          itemCount: providerW!.hideContactList.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(10.0),
               child: InkWell(
                 onTap: (){
                   providerR!.storeIndex(index);
-                  Navigator.pushNamed(context, 'contactInfo',arguments: providerR!.addContactList[index]);
+                  Navigator.pushNamed(context, 'contactInfo',arguments: providerR!.hideContactList[index]);
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.10,
@@ -47,9 +45,9 @@ class _HiddenScreenState extends State<HiddenScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-                      children: [providerW!.addContactList[index].imagePath != null  ? CircleAvatar(
+                      children: [providerW!.hideContactList[index].imagePath != null  ? CircleAvatar(
                         radius: 25,
-                        backgroundImage: FileImage(File("${providerW!.addContactList[index].imagePath}")),
+                        backgroundImage: FileImage(File("${providerW!.hideContactList[index].imagePath}")),
                       ):
                       Container(
                         height: MediaQuery.of(context).size.height * 0.18,
@@ -61,7 +59,7 @@ class _HiddenScreenState extends State<HiddenScreen> {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                            "${providerW!.hideContactList[index].name!.isNotEmpty ? providerW!.hideContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
@@ -73,8 +71,8 @@ class _HiddenScreenState extends State<HiddenScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("${providerR!.addContactList[index].name}"),
-                            Text("${providerR!.addContactList[index].contact}"),
+                            Text("${providerR!.hideContactList[index].name}"),
+                            Text("${providerR!.hideContactList[index].contact}"),
                           ],
                         )
                       ],

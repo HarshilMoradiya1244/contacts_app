@@ -15,6 +15,7 @@ class ContactInfoScreen extends StatefulWidget {
 }
 
 class _ContactInfoScreenState extends State<ContactInfoScreen> {
+  bool islock=false;
   @override
   Widget build(BuildContext context) {
     ContactModel c1 =
@@ -41,7 +42,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                 onPressed: () {
                   context.read<ContactProvider>().shareData(c1);
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.share_outlined,
                   color: Colors.black,
                 )),
@@ -71,7 +72,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               backgroundImage:
                                   FileImage(File("${c1.imagePath}")),
                             ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
@@ -120,7 +121,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                             Uri.parse("tel:+91${c1.contact}");
                                         await launchUrl(uri);
                                       },
-                                      icon: Icon(Icons.call),
+                                      icon: const Icon(Icons.call),
                                       color: Colors.white,
                                     )),
                                 const SizedBox(
@@ -138,7 +139,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                             Uri.parse("sms:+91${c1.contact}");
                                         await launchUrl(uri);
                                       },
-                                      icon: Icon(Icons.message),
+                                      icon: const Icon(Icons.message),
                                       color: Colors.white,
                                     )),
                               ],
@@ -170,7 +171,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                     height: 40,
                                     width: 40,
@@ -183,7 +184,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                             Uri.parse("mailto:+91${c1.email}");
                                         await launchUrl(uri);
                                       },
-                                      icon: Icon(Icons.email_outlined),
+                                      icon: const Icon(Icons.email_outlined),
                                       color: Colors.white,
                                     )),
                               ],
@@ -205,7 +206,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.black),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                     height: 40,
                                     width: 40,
@@ -214,7 +215,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () {},
-                                      icon: Icon(Icons.video_call_outlined),
+                                      icon: const Icon(Icons.video_call_outlined),
                                       color: Colors.white,
                                     )),
                               ],
@@ -246,7 +247,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Container(
                                     height: 40,
                                     width: 40,
@@ -255,7 +256,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.red),
                                     child: IconButton(
                                       onPressed: () {},
-                                      icon: Icon(Icons.location_on_outlined),
+                                      icon: const Icon(Icons.location_on_outlined),
                                       color: Colors.white,
                                     )),
                               ],
@@ -283,7 +284,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                       onPressed: () {
                                         showWidget(context, c1);
                                       },
-                                      icon: Icon(Icons.edit),
+                                      icon: const Icon(Icons.edit),
                                       color: Colors.white,
                                     )),
                                 const SizedBox(
@@ -316,10 +317,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () {
-                                        context.read<ContactProvider>().hideContact();
+                                        // if(islock){
+                                        //   context.read<ContactProvider>().hideContact();
+                                        // }
+                                        // else
+                                        //   {
+                                        //     context.read<ContactProvider>().unHideContact();
+                                        //   }
                                         Navigator.pop(context);
                                       },
-                                      icon: const Icon(Icons.lock),
+                                      icon:  islock?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock),
                                       color: Colors.white,
                                     )),
                               ],
