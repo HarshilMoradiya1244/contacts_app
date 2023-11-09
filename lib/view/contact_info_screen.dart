@@ -317,13 +317,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                         color: Colors.green),
                                     child: IconButton(
                                       onPressed: () {
-                                        // if(islock){
-                                        //   context.read<ContactProvider>().hideContact();
-                                        // }
-                                        // else
-                                        //   {
-                                        //     context.read<ContactProvider>().unHideContact();
-                                        //   }
+                                        context.read<ContactProvider>().hideContact();
                                         Navigator.pop(context);
                                       },
                                       icon:  islock?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock),

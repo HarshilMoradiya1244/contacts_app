@@ -30,7 +30,6 @@ class _SplashScreenState extends State<SplashScreen> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: Center(
           child: Image.asset(
             "assets/images/phone-book.png",

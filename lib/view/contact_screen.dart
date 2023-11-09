@@ -41,7 +41,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       value: value.isLight,
                       onChanged: (value1) {
                         ShareHelper shr = ShareHelper();
-                        shr.setTheme(false);
+                        shr.setTheme(value1);
                         value.changeThem();
                       },
                     ))
