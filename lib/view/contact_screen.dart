@@ -18,7 +18,7 @@ class ContactScreen extends StatefulWidget {
 class _ContactScreenState extends State<ContactScreen> {
   ContactProvider? providerR;
   ContactProvider? providerW;
-
+  bool bioMatrix =true;
   @override
   Widget build(BuildContext context) {
     providerR = context.read<ContactProvider>();
@@ -29,9 +29,12 @@ class _ContactScreenState extends State<ContactScreen> {
         appBar: AppBar(
           title: Text("Contact App"),
           actions: [
-            IconButton(onPressed: () async {
-              providerR!.bioMatrix();
-             await Navigator.pushNamed(context, 'hidden');
+            IconButton(onPressed: ()  {
+              if(bioMatrix)
+                {
+                  providerR!.bioMatrix();
+                }Navigator.pushNamed(context, 'hidden');
+
       }, icon: Icon(Icons.remove_red_eye_outlined)),
             Consumer<ThemeProvider>(
                 builder: (context, value, child) => Switch(

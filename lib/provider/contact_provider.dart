@@ -42,9 +42,7 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // void contactIndex() {
-  //   index = infoIndex!;
-  // }
+
   void editContact(ContactModel c1) {
     if(isPrivate){
       hideContactList[infoIndex!]=c1;
@@ -93,7 +91,7 @@ Future<bool?> bioMatrix() async {
     if(checkBioMatrixStatus){
       List<BiometricType>biotypes = await auth.getAvailableBiometrics();
       if(biotypes.isNotEmpty){
-        bool isAuth = await auth.authenticate(localizedReason: "Whats up!",options: AuthenticationOptions(
+        bool isAuth = await auth.authenticate(localizedReason: "Enter Your Privacy Password",options: AuthenticationOptions(
           biometricOnly: false,
           useErrorDialogs: true
         ),);
