@@ -37,7 +37,7 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateImagePath(String newPath) {
+  void updateImagePath(String? newPath) {
     path = newPath;
     notifyListeners();
   }
