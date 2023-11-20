@@ -228,18 +228,18 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       const SizedBox(height: 10),
                       IconButton(
                           onPressed: () {
-                            providerR!.hideContact();
-                            Navigator.pop(context);
                             if (providerR!.isLock == true) {
                               providerR!.unHideContact();
-                              Navigator.pop(context);
                             }
+                            else{
+                              providerR!.hideContact();
+                            }
+                            Navigator.pop(context);
+
                           },
-                          icon: providerR!.isLock
-                              ? const Icon(Icons.lock_outline,
+                          icon: const Icon(Icons.lock_outline,
                                   color: Colors.black, size: 30)
-                              : const Icon(Icons.lock_open_outlined,
-                                  color: Colors.black, size: 30)),
+                      ),
                     ],
                   ),
                 ],

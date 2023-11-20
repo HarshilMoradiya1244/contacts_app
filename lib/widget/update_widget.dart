@@ -58,17 +58,17 @@ void showWidget(BuildContext context, ContactModel c1) {
                 },
                 child:
                 c1.imagePath != null || context.read<ContactProvider>().path != null
-                ? CircleAvatar(
+                ?CircleAvatar(
+                  radius: 70,
+                  backgroundImage: FileImage(File("${c1.imagePath}")),
+                )
+                : CircleAvatar(
                   radius: 80,
                   child: Text(
                     "${c1.name?.substring(0, 1).toUpperCase()}",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 )
-                :CircleAvatar(
-                  radius: 70,
-                  backgroundImage: FileImage(File("${c1.imagePath}")),
-                ),
               ),
             ),
             const SizedBox(

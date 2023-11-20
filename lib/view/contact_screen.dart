@@ -61,6 +61,7 @@ class _ContactScreenState extends State<ContactScreen> {
               child: InkWell(
                 onTap: () {
                   providerR!.storeIndex(index);
+                  providerR!.isLock = false;
                   Navigator.pushNamed(context, 'contactInfo',
                       arguments: providerR!.addContactList[index]);
                 },

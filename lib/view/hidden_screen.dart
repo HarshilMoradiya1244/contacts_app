@@ -34,6 +34,7 @@ class _HiddenScreenState extends State<HiddenScreen> {
               child: InkWell(
                 onTap: (){
                   providerR!.storeIndex(index);
+                  providerR!.isLock = true;
                   Navigator.pushNamed(context, 'contactInfo',arguments: providerR!.hideContactList[index]);
                 },
                 child: Container(
