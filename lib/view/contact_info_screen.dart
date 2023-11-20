@@ -230,16 +230,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                           onPressed: () {
                             if (providerR!.isLock == true) {
                               providerR!.unHideContact();
-                            }
-                            else{
+                            } else {
                               providerR!.hideContact();
                             }
                             Navigator.pop(context);
-
                           },
-                          icon: const Icon(Icons.lock_outline,
+                          icon: providerR!.isLock
+                              ? const Icon(Icons.visibility_off_outlined,
                                   color: Colors.black, size: 30)
-                      ),
+                              : const Icon(Icons.visibility,
+                                  color: Colors.black, size: 30)),
                     ],
                   ),
                 ],
