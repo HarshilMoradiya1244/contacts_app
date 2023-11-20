@@ -11,7 +11,7 @@ ThemeData lightTheme = ThemeData(
         )),
     textTheme: TextTheme(
       titleLarge: TextStyle(fontSize: 25, color: Colors.black),
-      titleMedium: TextStyle(fontSize: 15, color: Colors.grey.shade300),
+      titleMedium: TextStyle(fontSize: 15, color: Colors.black),
     ),
     brightness: Brightness.light);
 

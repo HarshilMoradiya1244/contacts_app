@@ -15,323 +15,228 @@ class ContactInfoScreen extends StatefulWidget {
 }
 
 class _ContactInfoScreenState extends State<ContactInfoScreen> {
+  ContactProvider? providerR;
+  ContactProvider? providerW;
+
   @override
   Widget build(BuildContext context) {
     ContactModel c1 =
         ModalRoute.of(context)!.settings.arguments as ContactModel;
+    providerR = context.read<ContactProvider>();
+    providerW = context.watch<ContactProvider>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Contact Info",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.black,
-            ),
-          ),
+          title: const Text("Contact Info"),
           actions: [
             IconButton(
-                onPressed: () {
-                  context.read<ContactProvider>().shareData(c1);
-                },
-                icon: const Icon(
-                  Icons.share_outlined,
-                  color: Colors.black,
-                )),
+              onPressed: () {
+                providerR!.shareData(c1);
+              },
+              icon: const Icon(Icons.share, color: Colors.white),
+            ),
           ],
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  height: MediaQuery.sizeOf(context).height * 0.30,
-                  width: MediaQuery.sizeOf(context).width,
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: Column(
-                    children: [
-                      c1.imagePath == null
-                          ? CircleAvatar(
-                              radius: 80,
-                              child: Text(
-                                "${c1.name?.substring(0, 1).toUpperCase()}",
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                            )
-                          : CircleAvatar(
-                              radius: 80,
-                              backgroundImage:
-                                  FileImage(File("${c1.imagePath}")),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              c1.imagePath == null
+                  ? CircleAvatar(
+                radius: 70,
+                child: Text("${c1.name?.substring(0, 1).toUpperCase()}",
+                    style: Theme.of(context).textTheme.titleLarge),
+              )
+                  : CircleAvatar(
+                radius: 70,
+                backgroundImage: FileImage(File("${c1.imagePath}")),
+              ),
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    "${c1.name}",
+                    // "Name: ${c1.name}",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
+              ),
+              const Divider(),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "+91 ${c1.contact}",
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
-                      const Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Text(
-                              "${c1.name}",
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.black),
-                            )),
+                            const Text("Mobile | India")
+                          ],
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.green),
+                          child: IconButton(
+                            onPressed: () async {
+                              Uri uri = Uri.parse("tel: +91${c1.contact}");
+                              await launchUrl(uri);
+                            },
+                            icon: const Icon(Icons.call),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${c1.email}",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const Text("Email")
+                          ],
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.blueGrey),
+                          child: IconButton(
+                            onPressed: () async {
+                              Uri uri = Uri.parse("mailto: ${c1.email}");
+                              await launchUrl(uri);
+                            },
+                            icon: const Icon(Icons.email),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Text(
+                          "Video Call",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.green),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.video_call),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Text(
+                          "WhatsApp Call",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.green),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.call_sharp),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Text(
+                          "Gujarat",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.redAccent),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.location_on),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 100),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          showWidget(context, c1);
+                        },
+                        icon: const Icon(Icons.edit,
+                            color: Colors.black, size: 30),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            providerR!.contactDelete();
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.delete,
+                              color: Colors.black, size: 30)),
+                      IconButton(
+                        onPressed: () {
+                          providerR!.hideContact();
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.lock_open_outlined,
+                            color: Colors.black, size: 30),
                       ),
                     ],
                   ),
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Container(
-                  height: MediaQuery.sizeOf(context).height * 0.56,
-                  width: MediaQuery.sizeOf(context).width,
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: Column(
-                    children: [
-                      Container(
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "+91 ${c1.contact}",
-                                  style: const TextStyle(
-                                      fontSize: 20, color: Colors.black),
-                                ),
-                                const Spacer(),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green),
-                                    child: IconButton(
-                                      onPressed: () async {
-                                        Uri uri =
-                                            Uri.parse("tel:+91${c1.contact}");
-                                        await launchUrl(uri);
-                                      },
-                                      icon: const Icon(Icons.call),
-                                      color: Colors.white,
-                                    )),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.blue),
-                                    child: IconButton(
-                                      onPressed: () async {
-                                        Uri uri =
-                                            Uri.parse("sms:+91${c1.contact}");
-                                        await launchUrl(uri);
-                                      },
-                                      icon: const Icon(Icons.message),
-                                      color: Colors.white,
-                                    )),
-                              ],
-                            ),
-                          )),
-                      const Divider(
-                        color: Colors.grey,
-                        thickness: 1,
-                      ),
-                      Container(
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "${c1.email}",
-                                      style: const TextStyle(
-                                          fontSize: 15, color: Colors.black),
-                                    ),
-                                    const Text(
-                                      "Email",
-                                      style: TextStyle(
-                                          fontSize: 10, color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                                const Spacer(),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red),
-                                    child: IconButton(
-                                      onPressed: () async {
-                                        Uri uri =
-                                            Uri.parse("mailto:+91${c1.email}");
-                                        await launchUrl(uri);
-                                      },
-                                      icon: const Icon(Icons.email_outlined),
-                                      color: Colors.white,
-                                    )),
-                              ],
-                            ),
-                          )),
-                      const Divider(
-                        color: Colors.grey,
-                        thickness: 1,
-                      ),
-                      Container(
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                const Text(
-                                  "Video Call",
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black),
-                                ),
-                                const Spacer(),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green),
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.video_call_outlined),
-                                      color: Colors.white,
-                                    )),
-                              ],
-                            ),
-                          )),
-                      const Divider(
-                        color: Colors.grey,
-                        thickness: 1,
-                      ),
-                      Container(
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Gujrat",
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black),
-                                    ),
-                                    Text(
-                                      "India",
-                                      style: TextStyle(
-                                          fontSize: 10, color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                                const Spacer(),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red),
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.location_on_outlined),
-                                      color: Colors.white,
-                                    )),
-                              ],
-                            ),
-                          )),
-                      const Divider(
-                        color: Colors.grey,
-                        thickness: 1,
-                      ),
-                      Container(
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green),
-                                    child: IconButton(
-                                      onPressed: () {
-                                        showWidget(context, c1);
-                                      },
-                                      icon: const Icon(Icons.edit),
-                                      color: Colors.white,
-                                    )),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.blue),
-                                    child: IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ContactProvider>()
-                                            .contactDelete();
-                                        Navigator.pop(context);
-                                      },
-                                      icon: const Icon(Icons.delete),
-                                      color: Colors.white,
-                                    )),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green),
-                                    child: IconButton(
-                                      onPressed: () {
-                                        context.read<ContactProvider>().hideContact();
-                                        if()
-
-                                        Navigator.pop(context);
-                                      },
-                                      icon: const Icon(Icons.lock_open_outlined),
-                                      color: Colors.white,
-                                    )),
-                              ],
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
