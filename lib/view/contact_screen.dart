@@ -18,7 +18,7 @@ class ContactScreen extends StatefulWidget {
 class _ContactScreenState extends State<ContactScreen> {
   ContactProvider? providerR;
   ContactProvider? providerW;
-  bool bioMatrix =true;
+
   @override
   Widget build(BuildContext context) {
     providerR = context.read<ContactProvider>();
@@ -27,24 +27,30 @@ class _ContactScreenState extends State<ContactScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Contact App"),
+          title: const Text("Contact App"),
           actions: [
-            IconButton(onPressed: ()  {
-              if(bioMatrix)
-                {
-                  providerR!.bioMatrix();
-                }Navigator.pushNamed(context, 'hidden');
-
-      }, icon: Icon(Icons.remove_red_eye_outlined)),
+            IconButton(
+              onPressed: () async{
+                bool? bioMatrix = await providerR!.bioMatrix();
+                if(bioMatrix != null ){
+                  if(bioMatrix == true){
+                   providerR!.isPrivate = true;
+                    Navigator.pushNamed(context, 'hidden');
+                  }
+                }
+              },
+              icon: const Icon(Icons.remove_red_eye_outlined),
+            ),
             Consumer<ThemeProvider>(
-                builder: (context, value, child) => Switch(
-                      value: value.isLight,
-                      onChanged: (value1) {
-                        ShareHelper shr = ShareHelper();
-                        shr.setTheme(value1);
-                        value.changeThem();
-                      },
-                    ))
+              builder: (context, value, child) => Switch(
+                value: value.isLight,
+                onChanged: (value1) {
+                  ShareHelper shr = ShareHelper();
+                  shr.setTheme(value1);
+                  value.changeThem();
+                },
+              ),
+            ),
           ],
         ),
         body: ListView.builder(
@@ -53,9 +59,10 @@ class _ContactScreenState extends State<ContactScreen> {
             return Padding(
               padding: const EdgeInsets.all(10.0),
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   providerR!.storeIndex(index);
-                  Navigator.pushNamed(context, 'contactInfo',arguments: providerR!.addContactList[index]);
+                  Navigator.pushNamed(context, 'contactInfo',
+                      arguments: providerR!.addContactList[index]);
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.10,
@@ -66,25 +73,29 @@ class _ContactScreenState extends State<ContactScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-                      children: [providerW!.addContactList[index].imagePath != null  ? CircleAvatar(
-                          radius: 25,
-                          backgroundImage: FileImage(File("${providerW!.addContactList[index].imagePath}")),
-                        ):
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.18,
-                          width: MediaQuery.of(context).size.width * 0.20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: boxcolorList[index],
-                          ),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ),
-                        ),
+                      children: [
+                        providerW!.addContactList[index].imagePath != null
+                            ? CircleAvatar(
+                                radius: 25,
+                                backgroundImage: FileImage(File(
+                                    "${providerW!.addContactList[index].imagePath}")),
+                              )
+                            : Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.18,
+                                width: MediaQuery.of(context).size.width * 0.20,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: boxcolorList[index],
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                              ),
                         const SizedBox(
                           width: 20,
                         ),

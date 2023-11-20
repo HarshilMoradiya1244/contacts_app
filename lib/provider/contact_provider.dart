@@ -12,7 +12,7 @@ class ContactProvider with ChangeNotifier {
   String? path;
   int? infoIndex;
   bool isPrivate = false;
-
+  bool? isLock;
   void nextStep() {
     if (stepindex < 3) {
       stepindex++;
@@ -89,9 +89,9 @@ Future<bool?> bioMatrix() async {
     LocalAuthentication auth = LocalAuthentication();
     bool checkBioMatrixStatus = await auth.canCheckBiometrics;
     if(checkBioMatrixStatus){
-      List<BiometricType>biotypes = await auth.getAvailableBiometrics();
+      List<BiometricType> biotypes = await auth.getAvailableBiometrics();
       if(biotypes.isNotEmpty){
-        bool isAuth = await auth.authenticate(localizedReason: "Enter Your Privacy Password",options: AuthenticationOptions(
+        bool isAuth = await auth.authenticate(localizedReason: "Enter Your Privacy Password",options: const AuthenticationOptions(
           biometricOnly: false,
           useErrorDialogs: true
         ),);

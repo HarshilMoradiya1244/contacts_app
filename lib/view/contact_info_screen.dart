@@ -15,7 +15,6 @@ class ContactInfoScreen extends StatefulWidget {
 }
 
 class _ContactInfoScreenState extends State<ContactInfoScreen> {
-  bool islock=false;
   @override
   Widget build(BuildContext context) {
     ContactModel c1 =
@@ -318,9 +317,11 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     child: IconButton(
                                       onPressed: () {
                                         context.read<ContactProvider>().hideContact();
+                                        if()
+
                                         Navigator.pop(context);
                                       },
-                                      icon:  islock?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock),
+                                      icon: const Icon(Icons.lock_open_outlined),
                                       color: Colors.white,
                                     )),
                               ],
