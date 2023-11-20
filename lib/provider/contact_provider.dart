@@ -12,7 +12,7 @@ class ContactProvider with ChangeNotifier {
   String? path;
   int? infoIndex;
   bool isPrivate = false;
-  bool? isLock;
+  bool isLock = false;
   void nextStep() {
     if (stepindex < 3) {
       stepindex++;

@@ -43,14 +43,14 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
               const SizedBox(height: 20),
               c1.imagePath == null
                   ? CircleAvatar(
-                radius: 70,
-                child: Text("${c1.name?.substring(0, 1).toUpperCase()}",
-                    style: Theme.of(context).textTheme.titleLarge),
-              )
+                      radius: 70,
+                      child: Text("${c1.name?.substring(0, 1).toUpperCase()}",
+                          style: Theme.of(context).textTheme.titleLarge),
+                    )
                   : CircleAvatar(
-                radius: 70,
-                backgroundImage: FileImage(File("${c1.imagePath}")),
-              ),
+                      radius: 70,
+                      backgroundImage: FileImage(File("${c1.imagePath}")),
+                    ),
               const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
@@ -214,24 +214,32 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                         onPressed: () {
                           showWidget(context, c1);
                         },
-                        icon: const Icon(Icons.edit,
+                        icon: const Icon(Icons.edit_outlined,
                             color: Colors.black, size: 30),
                       ),
+                      const SizedBox(height: 10),
                       IconButton(
                           onPressed: () {
                             providerR!.contactDelete();
                             Navigator.pop(context);
                           },
-                          icon: const Icon(Icons.delete,
+                          icon: const Icon(Icons.delete_outline,
                               color: Colors.black, size: 30)),
+                      const SizedBox(height: 10),
                       IconButton(
-                        onPressed: () {
-                          providerR!.hideContact();
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.lock_open_outlined,
-                            color: Colors.black, size: 30),
-                      ),
+                          onPressed: () {
+                            providerR!.hideContact();
+                            Navigator.pop(context);
+                            if (providerR!.isLock == true) {
+                              providerR!.unHideContact();
+                              Navigator.pop(context);
+                            }
+                          },
+                          icon: providerR!.isLock
+                              ? const Icon(Icons.lock_outline,
+                                  color: Colors.black, size: 30)
+                              : const Icon(Icons.lock_open_outlined,
+                                  color: Colors.black, size: 30)),
                     ],
                   ),
                 ],
