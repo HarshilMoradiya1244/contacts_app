@@ -31,8 +31,8 @@ samples, guidance on mobile development, and a full API reference.
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/286d93bf-5c2b-4aa8-9577-d76de56275d7",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/786381f4-f748-4b4c-bc0b-1f4df93f021a",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/22f2bb29-edfd-47c9-96df-b4018b13c59c",hieght="500"width="150">
-  <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/b1a5c476-677f-48df-82c8-4ca7f6cc0bb6",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/2648bed2-589a-4028-998b-2a57ccffbcf7",hieght="500"width="150">
+  <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/b1a5c476-677f-48df-82c8-4ca7f6cc0bb6",hieght="500"width="150">
 
  
 </p>
