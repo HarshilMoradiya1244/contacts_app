@@ -30,10 +30,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           title: const Text(
             "Add Contacts",
-            style: TextStyle(color: Colors.black),
           ),
           centerTitle: true,
         ),

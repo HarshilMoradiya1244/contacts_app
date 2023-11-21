@@ -44,7 +44,7 @@ class ContactProvider with ChangeNotifier {
 
 
   void editContact(ContactModel c1) {
-    if(isPrivate){
+    if(isLock){
       hideContactList[infoIndex!]=c1;
     }
     else{
@@ -54,7 +54,7 @@ class ContactProvider with ChangeNotifier {
   }
 
   void contactDelete() {
-    if(isPrivate){
+    if(isLock){
       hideContactList.removeAt(infoIndex!);
     }
     else{

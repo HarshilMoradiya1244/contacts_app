@@ -139,6 +139,39 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                     child: Row(
                       children: [
                         const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${c1.contact}",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const Text("Massage",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+                        const Spacer(),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.blueGrey),
+                          child: IconButton(
+                            onPressed: () async {
+                              Uri uri = Uri.parse("sms: ${c1.contact}");
+                              await launchUrl(uri);
+                            },
+                            icon: const Icon(Icons.message),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
                         Text(
                           "Video Call",
                           style: Theme.of(context).textTheme.titleMedium,
@@ -206,7 +239,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

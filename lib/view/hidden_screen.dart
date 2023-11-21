@@ -42,7 +42,7 @@ class _HiddenScreenState extends State<HiddenScreen> {
                   width: MediaQuery.of(context).size.width * 0.10,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.shade300),
+                      color: grey),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
