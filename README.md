@@ -16,8 +16,6 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-
-
 <p>
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/c1ac8d75-c389-4a3b-80b8-355d2737bf3a",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/53b1623d-fce6-46a4-b84f-0097d6521c1a",hieght="500"width="150">
@@ -33,6 +31,9 @@ samples, guidance on mobile development, and a full API reference.
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/22f2bb29-edfd-47c9-96df-b4018b13c59c",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/2648bed2-589a-4028-998b-2a57ccffbcf7",hieght="500"width="150">
   <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/b1a5c476-677f-48df-82c8-4ca7f6cc0bb6",hieght="500"width="150">
+  <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/bd3007cc-c498-4d2a-aa07-bdeb4183f7a9",hieght="500"width="150">  
+  <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/a7e79a9f-61a0-4fb8-aaa0-7eb1c7ee3fa5",hieght="500"width="150">
+  <img src="https://github.com/HarshilMoradiya1244/contacts_app/assets/142592789/5dfbfe80-9a2c-487d-a654-b915fe9d7c51",hieght="500"width="150">
 
  
 </p>
