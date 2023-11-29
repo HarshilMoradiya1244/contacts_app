@@ -9,7 +9,7 @@ ThemeData lightTheme = ThemeData(
           fontSize: 25,
           color: Colors.black,
         )),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       titleLarge: TextStyle(fontSize: 25, color: Colors.black),
       titleMedium: TextStyle(fontSize: 15, color: Colors.black),
     ),

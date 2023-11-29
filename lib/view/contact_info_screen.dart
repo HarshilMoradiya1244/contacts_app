@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:contacts_app/model/contact_model.dart';
 import 'package:contacts_app/provider/contact_provider.dart';
 import 'package:contacts_app/widget/update_widget.dart';
